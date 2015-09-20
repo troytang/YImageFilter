@@ -1,4 +1,4 @@
-package com.findd.imagefilter.internal;
+package com.tangwy.imagefilter.internal;
 
 import android.graphics.Bitmap;
 

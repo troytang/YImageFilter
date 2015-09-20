@@ -1,4 +1,4 @@
-package com.findd.imagefilter.internal;
+package com.tangwy.imagefilter.internal;
 
 /**
  * Created by Troy Tang on 2015-9-14.

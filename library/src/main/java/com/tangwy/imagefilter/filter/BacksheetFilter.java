@@ -1,10 +1,10 @@
-package com.findd.imagefilter.filter;
+package com.tangwy.imagefilter.filter;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
 
-import com.findd.imagefilter.internal.BaseFilter;
-import com.findd.imagefilter.internal.ImageFilter;
+import com.tangwy.imagefilter.internal.BaseFilter;
+import com.tangwy.imagefilter.internal.ImageFilter;
 
 /**
  * 底片风格

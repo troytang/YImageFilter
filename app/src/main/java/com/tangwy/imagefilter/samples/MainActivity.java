@@ -1,4 +1,4 @@
-package com.findd.imagefilter.samples;
+package com.tangwy.imagefilter.samples;
 
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -11,16 +11,16 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 
-import com.findd.imagefilter.filter.BacksheetFilter;
-import com.findd.imagefilter.drawable.FilterDrawable;
-import com.findd.imagefilter.filter.BlackWhiteFilter;
-import com.findd.imagefilter.filter.BlurFilter;
-import com.findd.imagefilter.filter.DarkFilter;
-import com.findd.imagefilter.filter.MosaicFilter;
-import com.findd.imagefilter.filter.OldFilter;
-import com.findd.imagefilter.filter.PunchFilter;
-import com.findd.imagefilter.filter.ReliefFilter;
-import com.findd.imagefilter.YImageFilter;
+import com.tangwy.imagefilter.filter.BacksheetFilter;
+import com.tangwy.imagefilter.drawable.FilterDrawable;
+import com.tangwy.imagefilter.filter.BlackWhiteFilter;
+import com.tangwy.imagefilter.filter.BlurFilter;
+import com.tangwy.imagefilter.filter.DarkFilter;
+import com.tangwy.imagefilter.filter.MosaicFilter;
+import com.tangwy.imagefilter.filter.OldFilter;
+import com.tangwy.imagefilter.filter.PunchFilter;
+import com.tangwy.imagefilter.filter.ReliefFilter;
+import com.tangwy.imagefilter.YImageFilter;
 
 public class MainActivity extends AppCompatActivity {
 

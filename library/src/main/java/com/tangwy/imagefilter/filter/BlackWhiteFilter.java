@@ -1,15 +1,19 @@
-package com.findd.imagefilter.filter;
+package com.tangwy.imagefilter.filter;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
 
-import com.findd.imagefilter.internal.BaseFilter;
-import com.findd.imagefilter.internal.ImageFilter;
+import com.tangwy.imagefilter.internal.BaseFilter;
+import com.tangwy.imagefilter.internal.ImageFilter;
 
 /**
+ * 黑白风格
+ * 算法原理：
+ * R = G = B = 0.3r + 0.11g + 0.59b
+ *
  * Created by Troy Tang on 2015-9-15.
  */
-public class PunchFilter extends BaseFilter implements ImageFilter {
+public class BlackWhiteFilter extends BaseFilter implements ImageFilter {
 
     @Override
     public Bitmap filter(Bitmap source) {
@@ -24,7 +28,7 @@ public class PunchFilter extends BaseFilter implements ImageFilter {
         Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
         int pixColor;
         int pixA, pixR, pixG, pixB;
-        int newR, newG, newB;
+        int newRGB;
         int[] pixels = new int[width * height];
         source.getPixels(pixels, 0, width, 0, 0, width, height);
         for (int i = 0; i < changeHeight; i++) {
@@ -35,30 +39,12 @@ public class PunchFilter extends BaseFilter implements ImageFilter {
                 pixG = Color.green(pixColor);
                 pixB = Color.blue(pixColor);
 
-                newR = clamp(pixR < 128 ? grayR(pixR) : 256 - grayR(pixR), 0, 255);
-                newG = clamp(pixG < 128 ? grayG(pixG) : 256 - grayG(pixG), 0, 255);
-                newB = clamp(pixB / 2 + 0x25, 0, 255);
+                newRGB = clamp((int) (0.3 * pixR + 0.11 * pixG + 0.59 * pixB), 0, 255);
 
-                pixels[width + i + k] = Color.argb(pixA, newR, newG, newB);
+                pixels[width * i + k] = Color.argb(pixA, newRGB, newRGB, newRGB);
             }
         }
         bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
         return bitmap;
-    }
-
-    private int grayR(int rValue) {
-        if (128 > rValue) {
-            return (int) (Math.pow(rValue, 3) / 64 / 256);
-        } else {
-            return (int) (Math.pow(256 - rValue, 3) / 64 / 256);
-        }
-    }
-
-    private int grayG(int gbValue) {
-        if (128 > gbValue) {
-            return (int) (Math.pow(gbValue, 2) / 128);
-        } else {
-            return (int) (Math.pow(256 - gbValue, 2) / 128);
-        }
     }
 }

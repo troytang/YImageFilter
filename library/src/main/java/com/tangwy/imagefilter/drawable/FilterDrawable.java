@@ -1,4 +1,4 @@
-package com.findd.imagefilter.drawable;
+package com.tangwy.imagefilter.drawable;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -13,8 +13,8 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.Transformation;
 import android.widget.ImageView;
 
-import com.findd.imagefilter.YImageFilter;
-import com.findd.imagefilter.internal.ImageFilter;
+import com.tangwy.imagefilter.YImageFilter;
+import com.tangwy.imagefilter.internal.ImageFilter;
 
 /**
  * Created by Troy Tang on 2015-9-14.

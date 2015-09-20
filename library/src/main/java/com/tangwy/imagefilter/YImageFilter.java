@@ -1,8 +1,8 @@
-package com.findd.imagefilter;
+package com.tangwy.imagefilter;
 
 import android.graphics.Bitmap;
 
-import com.findd.imagefilter.internal.ImageFilter;
+import com.tangwy.imagefilter.internal.ImageFilter;
 
 /**
  * Created by Troy Tang on 2015-9-14.

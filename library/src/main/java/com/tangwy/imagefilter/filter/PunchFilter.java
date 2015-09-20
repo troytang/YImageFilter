@@ -1,21 +1,15 @@
-package com.findd.imagefilter.filter;
+package com.tangwy.imagefilter.filter;
 
 import android.graphics.Bitmap;
 import android.graphics.Color;
 
-import com.findd.imagefilter.internal.BaseFilter;
-import com.findd.imagefilter.internal.ImageFilter;
+import com.tangwy.imagefilter.internal.BaseFilter;
+import com.tangwy.imagefilter.internal.ImageFilter;
 
 /**
- * 暗调风格
- * 算法原理：
- * R = r * r / 255
- * G = g * g / 255
- * B = b * b / 255
- *
  * Created by Troy Tang on 2015-9-15.
  */
-public class DarkFilter extends BaseFilter implements ImageFilter {
+public class PunchFilter extends BaseFilter implements ImageFilter {
 
     @Override
     public Bitmap filter(Bitmap source) {
@@ -41,14 +35,30 @@ public class DarkFilter extends BaseFilter implements ImageFilter {
                 pixG = Color.green(pixColor);
                 pixB = Color.blue(pixColor);
 
-                newR = (int) (Math.pow(pixR, 2) / 255);
-                newG = (int) (Math.pow(pixG, 2) / 255);
-                newB = (int) (Math.pow(pixB, 2) / 255);
+                newR = clamp(pixR < 128 ? grayR(pixR) : 256 - grayR(pixR), 0, 255);
+                newG = clamp(pixG < 128 ? grayG(pixG) : 256 - grayG(pixG), 0, 255);
+                newB = clamp(pixB / 2 + 0x25, 0, 255);
 
-                pixels[width * i + k] = Color.argb(pixA, newR, newG, newB);
+                pixels[width + i + k] = Color.argb(pixA, newR, newG, newB);
             }
         }
         bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
         return bitmap;
+    }
+
+    private int grayR(int rValue) {
+        if (128 > rValue) {
+            return (int) (Math.pow(rValue, 3) / 64 / 256);
+        } else {
+            return (int) (Math.pow(256 - rValue, 3) / 64 / 256);
+        }
+    }
+
+    private int grayG(int gbValue) {
+        if (128 > gbValue) {
+            return (int) (Math.pow(gbValue, 2) / 128);
+        } else {
+            return (int) (Math.pow(256 - gbValue, 2) / 128);
+        }
     }
 }
