@@ -1,7 +1,18 @@
 # YImageFilter #
 A android image filter library
 
-### How to Uses ###
+# Usage #
+
+### Gradle ###
+Add this dependency to your build.gradle file:
+```
+dependencies {
+    compile 'com.tangwy:yimagefilter:0.1.0'
+}
+```
+
+### Basic Usage ###
+
 * uses without animation
 ```
 ivOld = (ImageView) findViewById(R.id.ivOld);
@@ -21,7 +32,7 @@ ivChange.setOnClickListener(new View.OnClickListener() {
 });
 ```
 
-### License ###
+# License #
 
 ```
 Copyright 2015 Troy Tang
