@@ -30,12 +30,6 @@
         android:layout_below="@id/ivOld"/>
 
     <ImageView
-        android:id="@+id/ivReliefs"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_below="@id/ivBacksheet"/>
-
-    <ImageView
         android:id="@+id/ivBW"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -66,6 +60,40 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_below="@id/ivDark"
-        android:layout_toRightOf="@id/ivReliefs"/>
+        android:layout_toRightOf="@id/ivBacksheet"/>
+
+    <ImageView
+        android:id="@+id/ivBlock"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/ivPunch"
+        android:layout_toRightOf="@id/ivBW"/>
+
+    <ImageView
+        android:id="@+id/ivBright"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@id/ivBlock"
+        android:layout_toRightOf="@id/ivBW"/>
+
+    <ImageView
+        android:id="@+id/ivGamma"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_toRightOf="@+id/ivMosaic"/>
+
+    <ImageView
+        android:id="@+id/ivLight"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_toRightOf="@id/ivDark"
+        android:layout_below="@id/ivMosaic"/>
+
+    <ImageView
+        android:id="@+id/ivReliefs"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_toRightOf="@id/ivPunch"
+        android:layout_below="@id/ivLight"/>
 
 </RelativeLayout>

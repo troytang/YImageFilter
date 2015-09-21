@@ -1,5 +1,6 @@
 package com.tangwy.imagefilter.samples;
 
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,8 +15,12 @@ import android.widget.ImageView;
 import com.tangwy.imagefilter.filter.BacksheetFilter;
 import com.tangwy.imagefilter.drawable.FilterDrawable;
 import com.tangwy.imagefilter.filter.BlackWhiteFilter;
+import com.tangwy.imagefilter.filter.BlockFilter;
 import com.tangwy.imagefilter.filter.BlurFilter;
+import com.tangwy.imagefilter.filter.BrightContrastFilter;
 import com.tangwy.imagefilter.filter.DarkFilter;
+import com.tangwy.imagefilter.filter.GammaCorrectionFilter;
+import com.tangwy.imagefilter.filter.LightFilter;
 import com.tangwy.imagefilter.filter.MosaicFilter;
 import com.tangwy.imagefilter.filter.OldFilter;
 import com.tangwy.imagefilter.filter.PunchFilter;
@@ -33,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
     ImageView ivMosaic;
     ImageView ivDark;
     ImageView ivPunch;
+    ImageView ivBlock;
+    ImageView ivBright;
+    ImageView ivGamma;
+    ImageView ivLight;
     FilterDrawable od;
 
     @Override
@@ -67,13 +76,25 @@ public class MainActivity extends AppCompatActivity {
         ivBW.setImageBitmap(YImageFilter.filter(new BlackWhiteFilter(), BitmapFactory.decodeResource(getResources(), R.mipmap.blur)));
 
         ivMosaic = (ImageView) findViewById(R.id.ivMosaic);
-        ivMosaic.setImageBitmap(YImageFilter.filter(new MosaicFilter().mosaic(40), BitmapFactory.decodeResource(getResources(), R.mipmap.blur)));
+        ivMosaic.setImageBitmap(YImageFilter.filter(new MosaicFilter().mosaic(20), BitmapFactory.decodeResource(getResources(), R.mipmap.blur)));
 
         ivDark = (ImageView) findViewById(R.id.ivDark);
         ivDark.setImageBitmap(YImageFilter.filter(new DarkFilter(), BitmapFactory.decodeResource(getResources(), R.mipmap.blur)));
 
         ivPunch = (ImageView) findViewById(R.id.ivPunch);
         ivPunch.setImageBitmap(YImageFilter.filter(new PunchFilter(), BitmapFactory.decodeResource(getResources(), R.mipmap.blur)));
+
+        ivBlock = (ImageView) findViewById(R.id.ivBlock);
+        ivBlock.setImageBitmap(YImageFilter.filter(new BlockFilter(), BitmapFactory.decodeResource(getResources(), R.mipmap.blur)));
+
+        ivBright = (ImageView) findViewById(R.id.ivBright);
+        ivBright.setImageBitmap(YImageFilter.filter(new BrightContrastFilter().contrast(1.5f).brightness(0), BitmapFactory.decodeResource(getResources(), R.mipmap.blur)));
+
+        ivGamma = (ImageView) findViewById(R.id.ivGamma);
+        ivGamma.setImageBitmap(YImageFilter.filter(new GammaCorrectionFilter().gamma(2.2), BitmapFactory.decodeResource(getResources(), R.mipmap.blur)));
+
+        ivLight = (ImageView) findViewById(R.id.ivLight);
+        ivLight.setImageBitmap(YImageFilter.filter(new LightFilter(), BitmapFactory.decodeResource(getResources(), R.mipmap.blur)));
 
         ivChange = (ImageView) findViewById(R.id.ivChange);
         od = new FilterDrawable(ivChange, new BlackWhiteFilter(), BitmapFactory.decodeResource(MainActivity.this.getResources(), R.mipmap.blur), false);

@@ -17,4 +17,15 @@ public abstract class BaseFilter {
         return (x < a) ? a : (x > b) ? b : x;
     }
 
+    /**
+     * get color gray scale
+     *
+     * @param r
+     * @param g
+     * @param b
+     * @return
+     */
+    public int grayScale(int r, int g, int b) {
+        return clamp((int) (0.229 * r + 0.114 * g + 0.587 * b), 0, 255);
+    }
 }
