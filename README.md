@@ -7,7 +7,7 @@ A android image filter library
 Add this dependency to your build.gradle file:
 ```
 dependencies {
-    compile 'com.tangwy:yimagefilter:0.1.0'
+    compile 'com.tangwy:yimagefilter:0.1.1'
 }
 ```
 
