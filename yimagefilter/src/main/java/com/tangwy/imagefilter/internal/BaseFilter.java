@@ -6,7 +6,7 @@ package com.tangwy.imagefilter.internal;
 public abstract class BaseFilter {
 
     /**
-     * 确保x值在区间[a,b]
+     * ensure x in[a,b]
      *
      * @param x
      * @param a

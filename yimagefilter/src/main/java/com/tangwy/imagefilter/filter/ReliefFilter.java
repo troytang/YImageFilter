@@ -7,8 +7,7 @@ import com.tangwy.imagefilter.internal.BaseFilter;
 import com.tangwy.imagefilter.internal.ImageFilter;
 
 /**
- * 浮雕风格
- * 算法原理：
+ * Relief Style
  * R = pr - r + 127
  * G = pg - g + 127
  * B = pb - b + 127

@@ -7,9 +7,7 @@ import com.tangwy.imagefilter.internal.BaseFilter;
 import com.tangwy.imagefilter.internal.ImageFilter;
 
 /**
- * 马赛克风格
- * 算法原理：
- * 以MosaicSize为单位的全部像素值去最左上角的点的值
+ * Mosaic Style
  *
  * Created by Troy Tang on 2015-9-15.
  */
