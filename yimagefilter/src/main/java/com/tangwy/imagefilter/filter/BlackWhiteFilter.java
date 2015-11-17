@@ -5,6 +5,7 @@ import android.graphics.Color;
 
 import com.tangwy.imagefilter.internal.BaseFilter;
 import com.tangwy.imagefilter.internal.ImageFilter;
+import com.tangwy.jnifilter.JniFilter;
 
 /**
  * White and Black
@@ -25,24 +26,9 @@ public class BlackWhiteFilter extends BaseFilter implements ImageFilter {
         int height = source.getHeight();
         int changeHeight = (int) (percent * height);
         Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-        int pixColor;
-        int pixA, pixR, pixG, pixB;
-        int newRGB;
         int[] pixels = new int[width * height];
         source.getPixels(pixels, 0, width, 0, 0, width, height);
-        for (int i = 0; i < changeHeight; i++) {
-            for (int k = 0; k < width; k++) {
-                pixColor = pixels[width * i + k];
-                pixA = Color.alpha(pixColor);
-                pixR = Color.red(pixColor);
-                pixG = Color.green(pixColor);
-                pixB = Color.blue(pixColor);
-
-                newRGB = grayScale(pixR, pixG, pixB);
-
-                pixels[width * i + k] = Color.argb(pixA, newRGB, newRGB, newRGB);
-            }
-        }
+        pixels = JniFilter.blackWhiteFilter(pixels, width, changeHeight);
         bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
         return bitmap;
     }

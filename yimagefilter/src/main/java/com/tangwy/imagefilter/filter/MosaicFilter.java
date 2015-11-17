@@ -5,6 +5,7 @@ import android.graphics.Color;
 
 import com.tangwy.imagefilter.internal.BaseFilter;
 import com.tangwy.imagefilter.internal.ImageFilter;
+import com.tangwy.jnifilter.JniFilter;
 
 /**
  * Mosaic Style
@@ -39,26 +40,9 @@ public class MosaicFilter extends BaseFilter implements ImageFilter {
         int height = source.getHeight();
         int changeHeight = (int) (percent * height);
         Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-        int pixColor;
-        int newA = 0, newR = 0, newG = 0, newB = 0;
         int[] pixels = new int[width * height];
         source.getPixels(pixels, 0, width, 0, 0, width, height);
-        for (int i = 0; i < changeHeight; i++) {
-            for (int k = 0; k < width; k++) {
-                if (0 == i % mMosaicSize) {
-                    if (0 == k % mMosaicSize) {
-                        pixColor = pixels[width * i + k];
-                        newA = Color.alpha(pixColor);
-                        newR = Color.red(pixColor);
-                        newG = Color.green(pixColor);
-                        newB = Color.blue(pixColor);
-                    }
-                    pixels[width * i + k] = Color.argb(newA, newR, newG, newB);
-                } else {
-                    pixels[width * i + k] = pixels[width * (i - 1) + k];
-                }
-            }
-        }
+        pixels = JniFilter.mosaicFilter(pixels, width, changeHeight, mMosaicSize);
         bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
         return bitmap;
     }

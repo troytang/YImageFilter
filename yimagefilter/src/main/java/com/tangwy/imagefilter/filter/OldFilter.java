@@ -5,6 +5,7 @@ import android.graphics.Color;
 
 import com.tangwy.imagefilter.internal.BaseFilter;
 import com.tangwy.imagefilter.internal.ImageFilter;
+import com.tangwy.jnifilter.JniFilter;
 
 /**
  * Old Style
@@ -27,25 +28,9 @@ public class OldFilter extends BaseFilter implements ImageFilter {
         int height = source.getHeight();
         int changeHeight = (int) (percent * height);
         Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-        int pixColor;
-        int pixR, pixG, pixB;
-        int newA, newR, newG, newB;
         int[] pixels = new int[width * height];
         source.getPixels(pixels, 0, width, 0, 0, width, height);
-        for (int i = 0; i < changeHeight; i++) {
-            for (int k = 0; k < width; k++) {
-                pixColor = pixels[width * i + k];
-                newA = Color.alpha(pixColor);
-                pixR = Color.red(pixColor);
-                pixG = Color.green(pixColor);
-                pixB = Color.blue(pixColor);
-                newR = clamp((int) (0.393 * pixR + 0.769 * pixG + 0.189 * pixB), 0, 255);
-                newG = clamp((int) (0.349 * pixR + 0.686 * pixG + 0.168 * pixB), 0, 255);
-                newB = clamp((int) (0.272 * pixR + 0.534 * pixG + 0.131 * pixB), 0, 255);
-                pixels[width * i + k] = Color.argb(newA, newR, newG, newB);
-            }
-        }
-
+        pixels = JniFilter.oldFilter(pixels, width, changeHeight);
         bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
         return bitmap;
     }

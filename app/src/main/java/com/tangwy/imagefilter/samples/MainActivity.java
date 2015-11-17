@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         ivBright.setImageBitmap(YImageFilter.filter(new BrightContrastFilter().contrast(1.5f).brightness(0), BitmapFactory.decodeResource(getResources(), R.mipmap.blur)));
 
         ivGamma = (ImageView) findViewById(R.id.ivGamma);
-        ivGamma.setImageBitmap(YImageFilter.filter(new GammaCorrectionFilter().gamma(2.2), BitmapFactory.decodeResource(getResources(), R.mipmap.blur)));
+        ivGamma.setImageBitmap(YImageFilter.filter(new GammaCorrectionFilter(), BitmapFactory.decodeResource(getResources(), R.mipmap.blur)));
 
         ivLight = (ImageView) findViewById(R.id.ivLight);
         ivLight.setImageBitmap(YImageFilter.filter(new LightFilter(), BitmapFactory.decodeResource(getResources(), R.mipmap.blur)));

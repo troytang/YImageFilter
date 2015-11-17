@@ -5,6 +5,7 @@ import android.graphics.Color;
 
 import com.tangwy.imagefilter.internal.BaseFilter;
 import com.tangwy.imagefilter.internal.ImageFilter;
+import com.tangwy.jnifilter.JniFilter;
 
 /**
  * Dark Style
@@ -27,26 +28,9 @@ public class DarkFilter extends BaseFilter implements ImageFilter {
         int height = source.getHeight();
         int changeHeight = (int) (percent * height);
         Bitmap bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.RGB_565);
-        int pixColor;
-        int pixA, pixR, pixG, pixB;
-        int newR, newG, newB;
         int[] pixels = new int[width * height];
         source.getPixels(pixels, 0, width, 0, 0, width, height);
-        for (int i = 0; i < changeHeight; i++) {
-            for (int k = 0; k < width; k++) {
-                pixColor = pixels[width * i + k];
-                pixA = Color.alpha(pixColor);
-                pixR = Color.red(pixColor);
-                pixG = Color.green(pixColor);
-                pixB = Color.blue(pixColor);
-
-                newR = (int) (Math.pow(pixR, 2) / 255);
-                newG = (int) (Math.pow(pixG, 2) / 255);
-                newB = (int) (Math.pow(pixB, 2) / 255);
-
-                pixels[width * i + k] = Color.argb(pixA, newR, newG, newB);
-            }
-        }
+        pixels = JniFilter.darkFilter(pixels, width, changeHeight);
         bitmap.setPixels(pixels, 0, width, 0, 0, width, height);
         return bitmap;
     }
