@@ -74,7 +74,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_below="@id/ivBlock"
-        android:layout_toRightOf="@id/ivBW"/>
+        android:layout_toRightOf="@id/ivChange"/>
 
     <ImageView
         android:id="@+id/ivGamma"

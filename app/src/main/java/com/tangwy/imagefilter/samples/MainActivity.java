@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         ivBlock.setImageBitmap(YImageFilter.filter(new BlockFilter(), BitmapFactory.decodeResource(getResources(), R.mipmap.blur)));
 
         ivBright = (ImageView) findViewById(R.id.ivBright);
-        ivBright.setImageBitmap(YImageFilter.filter(new BrightContrastFilter().contrast(1.5f).brightness(0), BitmapFactory.decodeResource(getResources(), R.mipmap.blur)));
+        ivBright.setImageBitmap(YImageFilter.filter(new BrightContrastFilter(), BitmapFactory.decodeResource(getResources(), R.mipmap.blur)));
 
         ivGamma = (ImageView) findViewById(R.id.ivGamma);
         ivGamma.setImageBitmap(YImageFilter.filter(new GammaCorrectionFilter(), BitmapFactory.decodeResource(getResources(), R.mipmap.blur)));

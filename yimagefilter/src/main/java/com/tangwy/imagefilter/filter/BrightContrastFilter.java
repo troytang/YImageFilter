@@ -12,7 +12,7 @@ import com.tangwy.jnifilter.JniFilter;
  */
 public class BrightContrastFilter extends BaseFilter implements ImageFilter {
 
-    private int mBrightness = 100;
+    private int mBrightness = 50;
     private float mContrast = 1.0f;
 
     public BrightContrastFilter brightness(int brightness) {
