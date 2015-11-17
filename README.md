@@ -1,15 +1,19 @@
 # YImageFilter #
-A android image filter library
+A android image filter library by JNI.
 
 # Usage #
 
 ### Gradle ###
-Add this dependency to your build.gradle file:
+1.Add this dependency to your build.gradle file:
 ```
 dependencies {
-    compile 'com.tangwy:yimagefilter:0.1.1'
+    compile 'com.tangwy:yimagefilter:0.2.0'
 }
 ```
+
+2.Add the `.so` files to your app project file's tree:
+`Android Studio` for example. You should copy the `jniLibs` file to your app project, the file path must `src\main\jniLibs`
+
 
 ### Basic Usage ###
 
